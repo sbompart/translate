@@ -22,6 +22,44 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Instalacion de ngx-translate
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+npm install @ngx-translate/core --save
+npm install @ngx-translate/http-loader
+
+## Importar librerías necesarias
+
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+## Crear funcion que retornará un TranslateHttpLoader
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+## Agregar al @ngModule
+
+imports: [
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+  ]
+  
+  ## Importar en el app.component.ts
+  
+  import { TranslateService } from '@ngx-translate/core';
+  
+  /*------ Inyectar en el constructor ------*/
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
+  
+  /*------ Crear los archivos tipo .json de distintos idiomas ------*/
