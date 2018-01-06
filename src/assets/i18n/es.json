@@ -1,0 +1,11 @@
+{
+    "Title": "Ejemplo de Traductor",
+    "Intro": "Hola soy {{name}}, de {{age}} años",
+    "Language": {
+        "Title": "Idioma",
+        "EnglishShort": "In",
+        "English": "Ingles",
+        "Spanish": "Español",
+        "SpanishShort": "Es"
+    }
+}
