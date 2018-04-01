@@ -2,4 +2,10 @@
 
 <div>
   {{ 'Intro' | translate:user }}
+
+  <ul>
+    <li *ngFor="let item of prueba">
+      {{ item }}
+    </li>
+  </ul>
 </div>

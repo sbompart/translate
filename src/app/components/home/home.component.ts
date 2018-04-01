@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,16 @@ export class HomeComponent implements OnInit {
     age: 30
   };
 
+  prueba = [
+    'hola', 'como estas?', 'Bien y tu'
+  ];
+
   constructor() { }
 
   ngOnInit() {
+    _.forEach(this.prueba, (item) => {
+      console.log('prueba.....', item);
+    });
   }
 
 }
